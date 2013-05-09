@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Aoe_GridSearch>
+			<version>0.1.0</version>
+		</Aoe_GridSearch>
+	</modules>
+	
+	<global>
+		<helpers>
+			<aoe_gridsearch>
+				<class>Aoe_GridSearch_Helper</class>
+			</aoe_gridsearch>
+		</helpers>
+
+		<models>
+			<aoe_gridsearch>
+				<class>Aoe_GridSearch_Model</class>
+			</aoe_gridsearch>
+		</models>
+
+		<blocks>
+			<aoe_gridsearch>
+				<class>Aoe_GridSearch_Block</class>
+			</aoe_gridsearch>
+
+			<adminhtml>
+				<rewrite>
+					<widget_grid_column_filter_text>Aoe_GridSearch_Block_Adminhtml_Widget_Grid_Column_Filter_Text</widget_grid_column_filter_text>
+				</rewrite>
+			</adminhtml>
+		</blocks>
+	</global>
+	
+	<default>
+		<admin>
+			<gridsearch>
+				<searchlevel>default</searchlevel>
+			</gridsearch>
+		</admin>
+	</default>
+</config>

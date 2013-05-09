@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<config>
+    <sections>
+        <admin translate="label">
+            <groups>
+                <gridsearch translate="label">
+                    <label>Grid Search</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <searchlevel translate="label">
+                            <label>Search Level</label>
+							<comment>
+								<![CDATA[
+									<b>Default:</b> The default Magento text search - returns results that <i>contain</i> your search.<br/>
+									<b>Simple:</b>  Allows "*" and "|". Searching for "Br*a|Rob*son" will return Branca, Brita, Robinson, and Robertson results.<br/>
+									<b>Regex:</b>   Full Mysql <a href="http://dev.mysql.com/doc/refman/5.1/en/regexp.html#operator_regexp">REGEXP</a> support.
+								]]>
+								</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>aoe_gridsearch/system_config_source_regex_level</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </searchlevel>
+						<casesensitive translate="label">
+							<label>Case Sensitive</label>
+							<comment>Only relevant for Simple and Regex Search Levels.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+						</casesensitive>
+                    </fields>
+                </gridsearch>
+            </groups>
+        </admin>
+    </sections>
+</config>
