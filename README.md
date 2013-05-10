@@ -8,4 +8,4 @@ Default: The default Magento text search - returns results that contain your sea
 Simple:  Allows "*" and "|". Searching for "Br*a|Rob*son" will return Branca, Brita, Robinson, and Robertson results.
 
 Regex:   Full Mysql <a href="http://dev.mysql.com/doc/refman/5.0/en/regexp.html#operator_regexp">REGEXP</a> support.
-								
+         Note - case sensitivity will not be supported unless your table collations are configured to support it.

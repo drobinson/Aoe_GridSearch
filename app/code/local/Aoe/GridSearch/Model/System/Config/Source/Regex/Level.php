@@ -9,6 +9,9 @@
  */
 class Aoe_GridSearch_Model_System_Config_Source_Regex_Level {
 
+    /**
+     * Option constants
+     */
     const DEFAULT_SEARCH = 'default';
     const SIMPLE_SEARCH  = 'simple';
     const REGEX_SEARCH   = 'regex';

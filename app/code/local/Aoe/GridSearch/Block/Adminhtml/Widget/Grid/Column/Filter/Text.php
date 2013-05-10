@@ -16,7 +16,6 @@ class Aoe_GridSearch_Block_Adminhtml_Widget_Grid_Column_Filter_Text extends Mage
      */
     public function getCondition()
     {
-        //TODO: see if storing this value on the registry would be any faster
         $searchLevel = Mage::getStoreConfig(Aoe_GridSearch_Helper_Data::SEARCHLEVEL_CONFIG_PATH);
         $expression = null;
 
@@ -27,11 +26,12 @@ class Aoe_GridSearch_Block_Adminhtml_Widget_Grid_Column_Filter_Text extends Mage
 
         } elseif ($searchLevel == Aoe_GridSearch_Model_System_Config_Source_Regex_Level::SIMPLE_SEARCH) {
 
-            $expression = array('regexp', Mage::helper('aoe_gridsearch')->parseSimpleToExpression($this->getValue()));
+            $helper = Mage::Helper('aoe_gridsearch');
+            $expression = array('regexp' => $helper->parseSimpleToExpression($this->getValue()));
 
         } elseif ($searchLevel == Aoe_GridSearch_Model_System_Config_Source_Regex_Level::REGEX_SEARCH) {
 
-            $expression = array('regexp', Mage::helper('aoe_gridsearch')->parseRegexToExpression($this->getValue()));
+            $expression = array('regexp' => $this->getValue());
         }
 
         return $expression;
