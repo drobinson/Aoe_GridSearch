@@ -23,9 +23,10 @@ class Aoe_GridSearch_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function parseSimpleToExpression($filterValue)
     {
-        $filterValue = $this->mysql_regexp_escape_string($filterValue, array('*', '|'));
+        $filterValue = $this->mysql_regexp_escape_string($filterValue, array('*', '|', '+'));
 
         $filterValue = str_replace('*', '.*', $filterValue);
+        $filterValue = str_replace('+', '.+', $filterValue);
 
         return $filterValue;
     }

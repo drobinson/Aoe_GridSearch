@@ -16,7 +16,7 @@
                             <comment>
                                 <![CDATA[
                                     <b>Default:</b> The default Magento text search - returns results that <i>contain</i> your search.<br/>
-                                    <b>Simple:</b>  Allows "*" and "|". Searching for "Br*a|Rob*son" will return Branca, Brita, Robinson, and Robertson results.<br/>
+                                    <b>Simple:</b>  Allows "*", "|" and "+". Searching for "Br*a|Rob*son" will return Branca, Brita, Robinson, and Robertson results.<br/>
                                     <b>Regex:</b>   Full Mysql <a href="http://dev.mysql.com/doc/refman/5.1/en/regexp.html#operator_regexp">REGEXP</a> support.
                                 ]]>
                                 </comment>
