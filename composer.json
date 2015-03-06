@@ -1,0 +1,15 @@
+{
+    "name": "drobinson/aoe_gridsearch",
+    "license": "GPL-3.0+",
+    "type": "magento-module",
+    "description": "Added Magento Grid Search Functionality",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "2.1.1"
+    },
+    "authors":[
+        {
+            "name":"David Robinson",
+            "email":"{firstname}.{lastname}@aoe.com"
+        }
+    ]
+}
