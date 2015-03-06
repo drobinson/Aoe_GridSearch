@@ -26,7 +26,7 @@ class Aoe_GridSearch_Block_Adminhtml_Widget_Grid_Column_Filter_Text extends Mage
 
         } elseif ($searchLevel == Aoe_GridSearch_Model_System_Config_Source_Regex_Level::SIMPLE_SEARCH) {
 
-            $helper = Mage::Helper('aoe_gridsearch');
+            $helper = Mage::Helper('aoe_gridsearch'); /* @var Aoe_GridSearch_Helper_Data $helper */
             $expression = array('regexp' => $helper->parseSimpleToExpression($this->getValue()));
 
         } elseif ($searchLevel == Aoe_GridSearch_Model_System_Config_Source_Regex_Level::REGEX_SEARCH) {

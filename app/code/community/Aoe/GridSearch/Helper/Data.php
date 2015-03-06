@@ -23,7 +23,7 @@ class Aoe_GridSearch_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function parseSimpleToExpression($filterValue)
     {
-        $filterValue = $this->mysql_regexp_escape_string($filterValue, array('*', '|', '+'));
+        $filterValue = $this->escapeRegexCharacters($filterValue, array('*', '|', '+'));
 
         $filterValue = str_replace('*', '.*', $filterValue);
         $filterValue = str_replace('+', '.+', $filterValue);
@@ -38,9 +38,9 @@ class Aoe_GridSearch_Helper_Data extends Mage_Core_Helper_Abstract
      * @param array $exclude - characters you wish to exclude from escaping
      * @return string
      */
-    function mysql_regexp_escape_string($string, $exclude)
+    function escapeRegexCharacters($string, $exclude)
     {
-        $special_chars = array_diff(array('*', '.', '?', '+', '[', ']', '(', ')', '{', '}', '^', '$', '|', '\\'), $exclude);
+        $special_chars = array_diff(array('\\', '*', '.', '?', '+', '[', ']', '(', ')', '{', '}', '^', '$', '|'), $exclude);
         $replacements = array();
 
         foreach ($special_chars as $special_char)
