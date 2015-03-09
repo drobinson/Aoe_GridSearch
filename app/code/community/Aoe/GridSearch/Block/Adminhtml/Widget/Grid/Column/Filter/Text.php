@@ -17,6 +17,7 @@ class Aoe_GridSearch_Block_Adminhtml_Widget_Grid_Column_Filter_Text extends Mage
     public function getCondition()
     {
         $searchLevel = Mage::getStoreConfig(Aoe_GridSearch_Helper_Data::SEARCHLEVEL_CONFIG_PATH);
+        $gridSearchHelper = Mage::Helper('aoe_gridsearch'); /* @var Aoe_GridSearch_Helper_Data $gridSearchHelper */
         $expression = null;
 
         if ($searchLevel == Aoe_GridSearch_Model_System_Config_Source_Regex_Level::DEFAULT_SEARCH) {
@@ -26,12 +27,15 @@ class Aoe_GridSearch_Block_Adminhtml_Widget_Grid_Column_Filter_Text extends Mage
 
         } elseif ($searchLevel == Aoe_GridSearch_Model_System_Config_Source_Regex_Level::SIMPLE_SEARCH) {
 
-            $helper = Mage::Helper('aoe_gridsearch'); /* @var Aoe_GridSearch_Helper_Data $helper */
-            $expression = array('regexp' => $helper->parseSimpleToExpression($this->getValue()));
+            $expression = array('regexp' => $gridSearchHelper->parseSimpleToExpression($this->getValue()));
 
         } elseif ($searchLevel == Aoe_GridSearch_Model_System_Config_Source_Regex_Level::REGEX_SEARCH) {
 
-            $expression = array('regexp' => $this->getValue());
+            if ($gridSearchHelper->isValidRegex($this->getValue())) {
+                $expression = array('regexp' => $this->getValue());
+            } else {
+                Mage::register('aoe_gridsearch_invalid_regex', $this->getValue());
+            }
         }
 
         return $expression;

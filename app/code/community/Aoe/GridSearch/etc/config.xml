@@ -32,6 +32,20 @@
         </blocks>
     </global>
 
+    <adminhtml>
+        <events>
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <aoe_gridsearch_reload>
+                        <type>singleton</type>
+                        <class>aoe_gridsearch/observer</class>
+                        <method>coreBlockAbstractToHtmlAfter</method>
+                    </aoe_gridsearch_reload>
+                </observers>
+            </core_block_abstract_to_html_after>
+        </events>
+    </adminhtml>
+
     <default>
         <admin>
             <gridsearch>

@@ -38,7 +38,7 @@ class Aoe_GridSearch_Helper_Data extends Mage_Core_Helper_Abstract
      * @param array $exclude - characters you wish to exclude from escaping
      * @return string
      */
-    function escapeRegexCharacters($string, $exclude)
+    public function escapeRegexCharacters($string, $exclude)
     {
         $special_chars = array_diff(array('\\', '*', '.', '?', '+', '[', ']', '(', ')', '{', '}', '^', '$', '|'), $exclude);
         $replacements = array();
@@ -49,5 +49,23 @@ class Aoe_GridSearch_Helper_Data extends Mage_Core_Helper_Abstract
         }
 
         return str_replace($special_chars, $replacements, $string);
+    }
+
+    /**
+     * Tests for a valid regular expression...
+     *
+     * @param $regex
+     * @return bool
+     */
+    public function isValidRegex($regex)
+    {
+        try {
+            /* @var Varien_Db_Adapter_Interface $connection */
+            $connection = Mage::getModel('core/store')->getResource()->getReadConnection();
+            $connection->query($connection->quoteInto('SELECT 1 REGEXP ?', $regex));
+        } catch (Exception $e) {
+            return false;
+        }
+        return true;
     }
 }
